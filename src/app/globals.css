@@ -1,0 +1,328 @@
+@import "tailwindcss";
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
+@plugin "@tailwindcss/typography";
+
+/* ============================================
+   DESIGN SYSTEM — COLOR TOKENS
+   ============================================ */
+
+:root {
+  /* Backgrounds */
+  --background: 0 0% 98%;
+  --foreground: 215 28% 17%;
+
+  /* Card surfaces */
+  --card: 0 0% 100%;
+  --card-foreground: 215 28% 17%;
+
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 28% 17%;
+
+  /* Primary */
+  --primary: 199 89% 48%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary */
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 215 28% 17%;
+
+  /* Muted */
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+
+  /* Accent */
+  --accent: 199 89% 48%;
+  --accent-foreground: 204 80% 16%;
+
+  /* Destructive */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Border & input */
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 199 89% 48%;
+
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Chart colors */
+  --chart-1: 199 89% 48%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 215 28% 17%;
+  --chart-4: 43 96% 56%;
+  --chart-5: 27 87% 67%;
+}
+
+.dark {
+  /* Backgrounds */
+  --background: 222 47% 11%;
+  --foreground: 214 32% 91%;
+
+  /* Card surfaces */
+  --card: 217 33% 17%;
+  --card-foreground: 214 32% 91%;
+
+  /* Popover */
+  --popover: 217 33% 17%;
+  --popover-foreground: 214 32% 91%;
+
+  /* Primary */
+  --primary: 198 93% 60%;
+  --primary-foreground: 222 47% 11%;
+
+  /* Secondary */
+  --secondary: 217 19% 27%;
+  --secondary-foreground: 214 32% 91%;
+
+  /* Muted */
+  --muted: 217 19% 27%;
+  --muted-foreground: 215 20% 65%;
+
+  /* Accent */
+  --accent: 198 93% 60%;
+  --accent-foreground: 222 47% 11%;
+
+  /* Destructive */
+  --destructive: 0 63% 51%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Border & input */
+  --border: 217 19% 27%;
+  --input: 217 19% 27%;
+  --ring: 198 93% 60%;
+
+  /* Chart colors */
+  --chart-1: 198 93% 60%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 214 32% 91%;
+  --chart-4: 43 96% 56%;
+  --chart-5: 27 87% 67%;
+}
+
+/* ============================================
+   THEME INLINE — TAILWIND v4 TOKENS
+   ============================================ */
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-geist-sans);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.5s ease-out forwards;
+  --animate-pulse-subtle: pulse-subtle 3s ease-in-out infinite;
+  --animate-grid-flow: grid-flow 20s linear infinite;
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes grid-flow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* ============================================
+   ANIMATED GRID BACKGROUND
+   ============================================ */
+
+.animated-grid {
+  background-size: 60px 60px;
+  background-image:
+    linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ============================================
+   PROSE OVERRIDES FOR MDX
+   ============================================ */
+
+.prose {
+  --tw-prose-body: hsl(var(--foreground));
+  --tw-prose-headings: hsl(var(--foreground));
+  --tw-prose-links: hsl(var(--primary));
+  --tw-prose-code: hsl(var(--foreground));
+  --tw-prose-pre-bg: hsl(var(--card));
+  --tw-prose-pre-code: hsl(var(--foreground));
+  --tw-prose-quotes: hsl(var(--muted-foreground));
+  --tw-prose-quote-borders: hsl(var(--primary));
+  --tw-prose-counters: hsl(var(--muted-foreground));
+  --tw-prose-bullets: hsl(var(--muted-foreground));
+  --tw-prose-hr: hsl(var(--border));
+  --tw-prose-th-borders: hsl(var(--border));
+  --tw-prose-td-borders: hsl(var(--border));
+}
+
+.prose pre {
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+}
+
+.prose code {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.875em;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+.prose :not(pre) > code {
+  background: hsl(var(--muted));
+  padding: 0.2em 0.4em;
+  border-radius: calc(var(--radius) - 4px);
+  font-weight: 400;
+}
+
+/* ============================================
+   CALLOUT COMPONENTS (for MDX)
+   ============================================ */
+
+.callout {
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+}
+
+.callout-note {
+  background: hsl(var(--primary) / 0.08);
+  border-color: hsl(var(--primary));
+}
+
+.callout-warning {
+  background: hsl(43 96% 56% / 0.08);
+  border-color: hsl(43 96% 56%);
+}
+
+.callout-tip {
+  background: hsl(142 71% 45% / 0.08);
+  border-color: hsl(142 71% 45%);
+}
+
+/* ============================================
+   SELECTION STYLING
+   ============================================ */
+
+::selection {
+  background: hsl(var(--primary) / 0.15);
+  color: hsl(var(--foreground));
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

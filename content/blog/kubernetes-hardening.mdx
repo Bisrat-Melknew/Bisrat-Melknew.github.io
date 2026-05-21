@@ -1,0 +1,189 @@
+---
+title: "Kubernetes Cluster Hardening: A Practical Guide"
+description: "Step-by-step hardening procedures for production Kubernetes clusters."
+excerpt: "Step-by-step hardening procedures for production Kubernetes clusters, covering RBAC, network policies, pod security, and runtime protection."
+date: "2024-08-20"
+author: "Bisrat M."
+tags:
+  - Kubernetes
+  - Container Security
+  - Cloud Native
+category: "Cloud"
+---
+
+## Introduction
+
+Running Kubernetes in production requires more than just deploying workloads. A default Kubernetes installation is permissive by design — it prioritizes ease of use over security. This guide covers the essential hardening steps every infrastructure engineer should implement before running production workloads.
+
+## 1. API Server Hardening
+
+The API server is the control plane's front door. Securing it is the first priority:
+
+```yaml
+# kube-apiserver configuration flags
+apiServer:
+  extraArgs:
+    # Disable anonymous authentication
+    anonymous-auth: "false"
+    # Enable audit logging
+    audit-log-path: /var/log/kubernetes/audit.log
+    audit-log-maxage: "30"
+    audit-log-maxbackup: "10"
+    audit-policy-file: /etc/kubernetes/audit-policy.yaml
+    # Encryption at rest
+    encryption-provider-config: /etc/kubernetes/encryption-config.yaml
+    # Disable insecure port
+    insecure-port: "0"
+```
+
+## 2. RBAC Best Practices
+
+Role-Based Access Control should follow the principle of least privilege:
+
+```yaml
+# Example: Read-only namespace role
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: production
+  name: pod-reader
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: production
+  name: read-pods
+subjects:
+  - kind: Group
+    name: "developers"
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
+```
+
+> **Warning**: Never use `cluster-admin` for regular operations. Create specific roles for each team and workflow.
+
+## 3. Network Policies
+
+By default, all pods can communicate with all other pods. Network policies implement micro-segmentation:
+
+```yaml
+# Deny all ingress by default
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: production
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+
+---
+# Allow specific traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-frontend-to-backend
+  namespace: production
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: frontend
+      ports:
+        - port: 8080
+          protocol: TCP
+```
+
+## 4. Pod Security Standards
+
+Enforce pod security at the namespace level:
+
+```yaml
+# Namespace with restricted pod security
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
+```
+
+Key restrictions in the `restricted` profile:
+- No privileged containers
+- No host namespace sharing
+- Read-only root filesystem
+- Non-root user required
+- No privilege escalation
+
+## 5. Image Security
+
+Control which images can run in your cluster:
+
+```yaml
+# OPA Gatekeeper constraint: only allow images from trusted registries
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: trusted-registries
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+  parameters:
+    repos:
+      - "gcr.io/my-project/"
+      - "docker.io/library/"
+```
+
+## 6. Runtime Security
+
+Deploy runtime monitoring to detect anomalous behavior:
+
+```yaml
+# Falco rule: detect shell in container
+- rule: Terminal shell in container
+  desc: Detect shell activity in a container
+  condition: >
+    spawned_process and container
+    and shell_procs
+    and not container.image.repository in (allowed_shell_images)
+  output: >
+    Shell opened in container
+    (user=%user.name container=%container.name
+     image=%container.image.repository)
+  priority: WARNING
+```
+
+## Hardening Checklist
+
+- [ ] API server: Disable anonymous auth, enable audit logging
+- [ ] RBAC: Implement least-privilege roles per team
+- [ ] Network policies: Default deny, explicit allow
+- [ ] Pod security: Enforce restricted standards
+- [ ] Image policy: Whitelist trusted registries
+- [ ] Secrets: Enable encryption at rest
+- [ ] Runtime: Deploy Falco or equivalent monitoring
+- [ ] Updates: Automate security patch management
+- [ ] Backup: Regular etcd backup and restore testing
+
+## Conclusion
+
+Kubernetes security is not a one-time activity. It requires continuous assessment, policy refinement, and staying current with the evolving threat landscape. Start with the fundamentals outlined in this guide, and iteratively improve your security posture based on risk assessments and compliance requirements.

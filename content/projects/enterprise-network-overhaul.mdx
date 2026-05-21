@@ -1,0 +1,105 @@
+---
+title: "Enterprise Network Architecture Overhaul"
+description: "Redesigned a multi-site enterprise network serving 5,000+ users across 12 locations with SD-WAN, Zero Trust segmentation, and automated provisioning."
+excerpt: "Complete network modernization for a multi-site enterprise environment."
+date: "2024-08-15"
+tags:
+  - Enterprise
+  - Networking
+  - Security
+featured: true
+technologies:
+  - Cisco SD-WAN
+  - Palo Alto Networks
+  - Terraform
+  - Ansible
+  - BGP/OSPF
+  - Splunk
+category: "Enterprise"
+---
+
+## Overview
+
+Led the complete redesign of enterprise network infrastructure spanning 12 geographic locations, migrating from legacy MPLS to a modern SD-WAN architecture while implementing Zero Trust network segmentation and automated configuration management.
+
+## Problem
+
+The existing network infrastructure was built on aging MPLS circuits with static routing configurations managed manually across all sites. Key challenges included:
+
+- **High operational costs** — MPLS circuits were 3x more expensive than broadband alternatives
+- **Limited visibility** — No centralized monitoring or traffic analytics
+- **Manual provisioning** — Each site required 2-3 days of on-site configuration
+- **Flat network architecture** — Minimal segmentation between departments and services
+- **Single point of failure** — No redundant paths for critical sites
+
+## Solution
+
+Designed and implemented a phased migration strategy:
+
+1. **SD-WAN Overlay** — Deployed Cisco SD-WAN (vManage/vSmart/vBond) across all sites with dual ISP uplinks
+2. **Zero Trust Segmentation** — Implemented micro-segmentation using Palo Alto next-gen firewalls with identity-based policies
+3. **Automated Provisioning** — Built Terraform modules and Ansible playbooks for zero-touch site deployment
+4. **Centralized Monitoring** — Integrated Splunk for real-time network analytics and anomaly detection
+
+## Architecture
+
+The architecture follows a hub-and-spoke model with regional hubs providing centralized security inspection:
+
+```
+┌─────────────────────────────────────────────┐
+│              vManage Controller              │
+├─────────────────────────────────────────────┤
+│                                             │
+│   ┌──────────┐    ┌──────────┐             │
+│   │ Regional │    │ Regional │             │
+│   │  Hub A   │────│  Hub B   │             │
+│   └────┬─────┘    └────┬─────┘             │
+│        │               │                    │
+│   ┌────┴────┐     ┌────┴────┐              │
+│   │ Site 1  │     │ Site 7  │              │
+│   │ Site 2  │     │ Site 8  │              │
+│   │ Site 3  │     │ Site 9  │              │
+│   │  ...    │     │  ...    │              │
+│   │ Site 6  │     │ Site 12 │              │
+│   └─────────┘     └─────────┘              │
+└─────────────────────────────────────────────┘
+```
+
+## Technologies Used
+
+- **SD-WAN**: Cisco vManage, vSmart, vBond, vEdge routers
+- **Security**: Palo Alto PA-5200 series, Panorama management
+- **Automation**: Terraform (infrastructure), Ansible (configuration)
+- **Monitoring**: Splunk Enterprise, ThousandEyes
+- **Routing**: BGP for WAN peering, OSPF for internal routing
+- **DNS/DHCP**: Infoblox centralized DDI
+
+## Security Considerations
+
+- All inter-site traffic encrypted with IPsec (AES-256-GCM)
+- Identity-based access policies tied to Active Directory groups
+- Micro-segmentation between IoT, corporate, and guest networks
+- Centralized certificate management with internal PKI
+- Real-time threat intelligence feeds integrated into firewall policies
+- Network Access Control (NAC) for endpoint compliance
+
+## Challenges
+
+1. **Legacy application compatibility** — Several line-of-business applications required specific QoS configurations that needed custom SD-WAN policies
+2. **Migration coordination** — Scheduling zero-downtime cutovers across 12 sites in different time zones
+3. **Staff training** — Upskilling the network operations team on SD-WAN and automation tooling
+
+## Results
+
+- **62% reduction** in WAN operational costs
+- **Zero-touch provisioning** — New site deployment reduced from 3 days to 4 hours
+- **99.99% uptime** achieved across all sites in first 6 months
+- **Mean Time to Resolution** decreased by 73% with centralized monitoring
+- **Full compliance** with SOC 2 Type II network security controls
+
+## Lessons Learned
+
+- Start with a thorough traffic analysis before designing SD-WAN policies — actual traffic patterns often differ from documented flows
+- Invest in automation early — the upfront cost pays dividends during multi-site rollouts
+- Maintain a parallel network during migration to enable rapid rollback
+- Document everything as code — network configurations should be version-controlled like application code
