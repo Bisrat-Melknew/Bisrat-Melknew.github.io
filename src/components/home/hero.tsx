@@ -32,8 +32,8 @@ export function Hero() {
           {/* Portrait Area */}
           <FadeIn delay={0.1}>
             <div className="mb-8 relative">
-              <div className="h-28 w-28 md:h-32 md:w-32 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border-2 border-border flex items-center justify-center">
-                <div className="h-24 w-24 md:h-28 md:w-28 rounded-full overflow-hidden bg-gradient-to-br from-muted to-card border border-border flex items-center justify-center relative">
+              <div className="h-36 w-36 md:h-44 md:w-44 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border-2 border-border flex items-center justify-center">
+                <div className="h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden bg-gradient-to-br from-muted to-card border border-border flex items-center justify-center relative">
                   <img
                     src="/images/portrait.png"
                     alt="Bisrat Melknew"
@@ -50,7 +50,7 @@ export function Hero() {
                     id="portrait-fallback"
                     className="absolute inset-0 hidden items-center justify-center"
                   >
-                    <span className="font-heading text-3xl md:text-4xl font-bold text-primary/60">
+                    <span className="font-heading text-4xl md:text-5xl font-bold text-primary/60">
                       BM
                     </span>
                   </div>
