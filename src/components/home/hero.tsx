@@ -33,10 +33,27 @@ export function Hero() {
           <FadeIn delay={0.1}>
             <div className="mb-8 relative">
               <div className="h-28 w-28 md:h-32 md:w-32 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border-2 border-border flex items-center justify-center">
-                <div className="h-24 w-24 md:h-28 md:w-28 rounded-full bg-gradient-to-br from-muted to-card border border-border flex items-center justify-center">
-                  <span className="font-heading text-3xl md:text-4xl font-bold text-primary/60">
-                    BM
-                  </span>
+                <div className="h-24 w-24 md:h-28 md:w-28 rounded-full overflow-hidden bg-gradient-to-br from-muted to-card border border-border flex items-center justify-center relative">
+                  <img
+                    src="/images/portrait.png"
+                    alt="Bisrat Melknew"
+                    className="h-full w-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                      const fallback = document.getElementById("portrait-fallback");
+                      if (fallback) {
+                        fallback.style.display = "flex";
+                      }
+                    }}
+                  />
+                  <div
+                    id="portrait-fallback"
+                    className="absolute inset-0 hidden items-center justify-center"
+                  >
+                    <span className="font-heading text-3xl md:text-4xl font-bold text-primary/60">
+                      BM
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
