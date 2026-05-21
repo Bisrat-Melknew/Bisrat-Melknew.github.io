@@ -38,6 +38,9 @@ export function Hero() {
                     src="/images/portrait.png"
                     alt="Bisrat Melknew"
                     className="h-full w-full object-cover"
+                    decoding="sync"
+                    fetchPriority="high"
+                    style={{ imageRendering: "-webkit-optimize-contrast" as any }}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                       const fallback = document.getElementById("portrait-fallback");
