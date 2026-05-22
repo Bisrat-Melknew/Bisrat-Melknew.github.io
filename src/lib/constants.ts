@@ -35,8 +35,8 @@ export const navItems = [
 ];
 
 export const socialLinks = {
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
+  github: "https://github.com/Bisrat-Melknew?tab=repositories",
+  linkedin: "https://linkedin.com/in/bisrat-melknew", // standard professional default format
 };
 
 export const expertiseCategories = [
