@@ -25,7 +25,7 @@ export function BlogCard({ post }: BlogCardProps) {
           </span>
         </div>
 
-        <h3 className="font-heading text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors leading-snug">
+        <h3 className="font-heading text-base font-semibold text-primary mb-2 group-hover:text-foreground transition-colors leading-snug">
           {post.title}
         </h3>
 

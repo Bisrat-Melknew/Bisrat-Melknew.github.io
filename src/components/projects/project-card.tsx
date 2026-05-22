@@ -38,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             ))}
           </div>
 
-          <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors leading-snug">
+          <h3 className="font-heading text-lg font-semibold text-primary mb-2 group-hover:text-foreground transition-colors leading-snug">
             {project.title}
           </h3>
 
