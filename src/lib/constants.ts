@@ -18,6 +18,12 @@ export const siteConfig = {
   location: "Available Worldwide",
   philosophy:
     "Building resilient systems through methodical engineering, rigorous security practices, and a commitment to operational excellence.",
+  giscusConfig: {
+    repo: "Bisrat-Melknew/Bisrat-Melknew.github.io",
+    repoId: "R_kgDOOBhKvg", // Placeholder - user can replace if their repoId is different
+    category: "Announcements",
+    categoryId: "DIC_kwDOOBhKvs4Cny5z", // Placeholder - user can replace if their categoryId is different
+  },
 };
 
 export const navItems = [

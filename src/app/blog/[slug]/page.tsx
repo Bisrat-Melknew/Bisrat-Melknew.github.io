@@ -6,6 +6,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import { TagBadge } from "@/components/shared/tag-badge";
+import { GiscusComments } from "@/components/blog/giscus-comments";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -97,6 +98,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ))}
         </div>
       </div>
+
+      {/* Discussion Section */}
+      <GiscusComments />
 
       {/* Footer Navigation */}
       <div className="mt-8 pt-6 border-t border-border">
