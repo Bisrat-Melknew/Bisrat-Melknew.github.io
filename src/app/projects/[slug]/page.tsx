@@ -6,6 +6,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getProjectBySlug, getProjectSlugs } from "@/lib/projects";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import { TagBadge } from "@/components/shared/tag-badge";
+import { GiscusComments } from "@/components/blog/giscus-comments";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -93,6 +94,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <article className="prose prose-slate dark:prose-invert max-w-none">
         <MDXRemote source={content} components={mdxComponents} />
       </article>
+
+      {/* Discussion Section */}
+      <GiscusComments />
 
       {/* Footer Navigation */}
       <div className="mt-16 pt-8 border-t border-border">
