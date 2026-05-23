@@ -243,6 +243,7 @@ body {
   --tw-prose-body: hsl(var(--foreground));
   --tw-prose-headings: hsl(var(--foreground));
   --tw-prose-links: hsl(var(--primary));
+  --tw-prose-bold: hsl(var(--foreground));
   --tw-prose-code: hsl(var(--foreground));
   --tw-prose-pre-bg: hsl(var(--card));
   --tw-prose-pre-code: hsl(var(--foreground));
@@ -272,9 +273,15 @@ body {
 
 .prose :not(pre) > code {
   background: hsl(var(--muted));
+  color: hsl(var(--foreground));
   padding: 0.2em 0.4em;
   border-radius: calc(var(--radius) - 4px);
-  font-weight: 400;
+  font-weight: 500;
+}
+
+.prose strong {
+  color: hsl(var(--foreground));
+  font-weight: 700;
 }
 
 /* ============================================
