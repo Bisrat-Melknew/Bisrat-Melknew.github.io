@@ -23,12 +23,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bisratm.github.io"),
   title: {
-    default: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
+    default: "Technical Portfolio | Network Security, Cloud & Infrastructure",
     template: "%s | Bisrat Melknew",
   },
   description:
-    "Portfolio of a Senior Infrastructure & Security Engineer specializing in designing, deploying, and securing scalable enterprise infrastructure across cloud and on-prem environments.",
+    "A collection of hands-on projects, technical blogs, and real-world implementations covering network security, cloud identity, enterprise networking and infrastructure automation.",
   keywords: [
     "Infrastructure Engineer",
     "Security Engineer",
@@ -44,16 +45,26 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
+    url: "https://bisratm.github.io",
+    title: "Technical Portfolio | Network Security, Cloud & Infrastructure",
     description:
-      "Designing, deploying, and securing scalable enterprise infrastructure.",
-    siteName: "Bisrat M elknew Portfolio",
+      "A collection of hands-on projects, technical blogs, and real-world implementations covering network security, cloud identity, enterprise networking and infrastructure automation.",
+    siteName: "Bisrat Melknew Portfolio",
+    images: [
+      {
+        url: "/images/banner-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Technical Portfolio | Network Security, Cloud & Infrastructure",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
+    title: "Technical Portfolio | Network Security, Cloud & Infrastructure",
     description:
-      "Designing, deploying, and securing scalable enterprise infrastructure.",
+      "A collection of hands-on projects, technical blogs, and real-world implementations covering network security, cloud identity, enterprise networking and infrastructure automation.",
+    images: ["/images/banner-image.png"],
   },
   robots: {
     index: true,
