@@ -78,7 +78,11 @@ The HQ runs a **FortiGate Active-Passive HA cluster** with two WAN uplinks:
 
 Both interfaces are aggregated into an SD-WAN **WAN-ZONE**. Performance SLA probes continuously monitor link quality (latency, jitter, packet loss) to `8.8.8.8`. SD-WAN steering rules enforce an **active-passive policy**: all traffic prefers WAN1 and automatically shifts to WAN2 if three consecutive health checks fail — achieving **sub-15-second failover**.
 
+![FortiGate SD-WAN Performance SLA Dashboard](/images/Project%201/sdwan-performance-sla.png)
+
 The HA cluster uses **Unicast Heartbeat over UDP/4500** on a dedicated sync interface to overcome KVM/Linux bridge limitations that drop standard multicast heartbeat frames (`EtherType 0x8890`). A Cisco Layer 2 switch segregates WAN1 and WAN2 traffic using **VLANs 100 and 200**, enabling clean gratuitous ARP and virtual MAC propagation during failover.
+
+![FortiGate HA Status Dashboard](/images/Project%201/fortigate-ha-status.png)
 
 ### Branch Spokes
 
@@ -91,6 +95,8 @@ Each branch establishes **two IPsec tunnels**: one to HQ WAN1 and one to HQ WAN2
 ### Dynamic Routing (OSPF Area 0)
 
 All tunnel interfaces participate in **OSPF Area 0** to dynamically advertise and learn branch subnets. LAN and SSL-VPN subnets are configured as **passive interfaces** to prevent unnecessary OSPF hello flooding while still advertising prefixes into the routing domain.
+
+![Multi-Vendor OSPF Adjacency CLI](/images/Project%201/ospf-multi-vendor-adjacency.jpg)
 
 ### SSL-VPN Remote Access
 
