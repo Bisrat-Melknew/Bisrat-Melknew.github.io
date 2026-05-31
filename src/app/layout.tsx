@@ -23,13 +23,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bisratm.github.io"),
   title: {
-    default: "Technical Portfolio | Network Security, Cloud & Infrastructure",
+    default: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
     template: "%s | Bisrat Melknew",
   },
   description:
-    "A collection of hands-on projects, technical blogs, and real-world implementations covering network security, cloud identity, enterprise networking and infrastructure automation.",
+    "Portfolio of a Senior Infrastructure & Security Engineer specializing in designing, deploying, and securing scalable enterprise infrastructure across cloud and on-prem environments.",
   keywords: [
     "Infrastructure Engineer",
     "Security Engineer",
@@ -45,26 +44,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bisratm.github.io",
-    title: "Technical Portfolio | Network Security, Cloud & Infrastructure",
+    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
     description:
-      "A collection of hands-on projects, technical blogs, and real-world implementations covering network security, cloud identity, enterprise networking and infrastructure automation.",
-    siteName: "Bisrat Melknew Portfolio",
-    images: [
-      {
-        url: "/images/banner-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Technical Portfolio | Network Security, Cloud & Infrastructure",
-      },
-    ],
+      "Designing, deploying, and securing scalable enterprise infrastructure.",
+    siteName: "Bisrat M elknew Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Technical Portfolio | Network Security, Cloud & Infrastructure",
+    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
     description:
-      "A collection of hands-on projects, technical blogs, and real-world implementations covering network security, cloud identity, enterprise networking and infrastructure automation.",
-    images: ["/images/banner-image.png"],
+      "Designing, deploying, and securing scalable enterprise infrastructure.",
   },
   robots: {
     index: true,
