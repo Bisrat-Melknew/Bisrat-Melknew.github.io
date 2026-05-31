@@ -24,11 +24,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
+    default: "Bisrat Melknew — IT Infrastructure & Security Engineer",
     template: "%s | Bisrat Melknew",
   },
   description:
-    "Portfolio of a Senior Infrastructure & Security Engineer specializing in designing, deploying, and securing scalable enterprise infrastructure across cloud and on-prem environments.",
+    "Portfolio of a IT Infrastructure & Security Engineer specializing in designing, deploying, and securing scalable enterprise infrastructure across cloud and on-prem environments.",
   keywords: [
     "Infrastructure Engineer",
     "Security Engineer",
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
+    title: "Bisrat Melknew — IT Infrastructure & Security Engineer",
     description:
       "Designing, deploying, and securing scalable enterprise infrastructure.",
-    siteName: "Bisrat M elknew Portfolio",
+    siteName: "Bisrat Melknew Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
+    title: "Bisrat Melknew — IT Infrastructure & Security Engineer",
     description:
       "Designing, deploying, and securing scalable enterprise infrastructure.",
   },
