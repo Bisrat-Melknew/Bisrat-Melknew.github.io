@@ -17,24 +17,6 @@ const latestPosts = [
     category: "Security",
     readingTime: "12 min read",
   },
-  {
-    slug: "kubernetes-hardening",
-    title: "Kubernetes Cluster Hardening: A Practical Guide",
-    excerpt:
-      "Step-by-step hardening procedures for production Kubernetes clusters, covering RBAC, network policies, pod security, and runtime protection.",
-    date: "2024-08-20",
-    category: "Cloud",
-    readingTime: "15 min read",
-  },
-  {
-    slug: "terraform-multi-cloud",
-    title: "Multi-Cloud Infrastructure with Terraform Workspaces",
-    excerpt:
-      "Managing infrastructure across AWS and Azure using Terraform workspaces, remote state, and modular configurations for scalable deployments.",
-    date: "2024-07-10",
-    category: "Automation",
-    readingTime: "10 min read",
-  },
 ];
 
 export function LatestPosts() {

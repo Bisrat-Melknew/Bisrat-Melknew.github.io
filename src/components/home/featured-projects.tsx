@@ -10,30 +10,18 @@ import { motion } from "framer-motion";
 
 const featuredProjects: Project[] = [
   {
-    slug: "enterprise-network-overhaul",
-    title: "Enterprise Network Architecture Overhaul",
+    slug: "portfolio-project1-VPN",
+    title: "Multi-Vendor Enterprise Hub-and-Spoke WAN Architecture | SD-WAN | IPsec VPN | SSL VPN | High Availability",
     description:
-      "Redesigned a multi-site enterprise network serving 5,000+ users across 12 locations, implementing SD-WAN, Zero Trust segmentation, and automated provisioning.",
+      "A production-grade enterprise WAN architecture featuring Dual-WAN SD-WAN, redundant IPsec VTI tunnels with OSPF dynamic routing, Active-Passive HA clustering, and AD CS-backed SSL/TLS VPNs for secure remote access.",
     excerpt:
-      "Complete network modernization for a multi-site enterprise environment.",
-    date: "2024-08",
-    tags: ["Enterprise", "Networking", "Security"],
+      "Designed and deployed a resilient, multi-vendor enterprise WAN architecture featuring SD-WAN path optimization, redundant IPsec tunnels, OSPF routing, and certificate-based SSL-VPN for secure remote access.",
+    date: "2025-05-29",
+    tags: ["Networking", "VPN", "SD-WAN", "High Availability"],
     featured: true,
-    technologies: ["Cisco SD-WAN", "Palo Alto", "Terraform", "Ansible"],
-    category: "Enterprise",
-  },
-  {
-    slug: "cloud-security-platform",
-    title: "Multi-Cloud Security Operations Platform",
-    description:
-      "Built a centralized security operations platform spanning AWS and Azure environments, integrating SIEM, automated incident response, and compliance monitoring.",
-    excerpt:
-      "Unified security operations across AWS and Azure cloud environments.",
-    date: "2024-06",
-    tags: ["Cloud", "Security", "Automation"],
-    featured: true,
-    technologies: ["AWS", "Azure Sentinel", "Terraform", "Python"],
-    category: "Cloud",
+    image: "/images/vpn-sdwan-ha-final-topology.png",
+    technologies: ["FortiGate", "Cisco", "pfSense", "SD-WAN", "OSPF"],
+    category: "Networking",
   },
 ];
 
@@ -56,15 +44,23 @@ export function FeaturedProjects() {
                   transition={{ duration: 0.2 }}
                 >
                   {/* Image / Diagram Area */}
-                  <div className="aspect-[16/9] bg-gradient-to-br from-primary/5 via-muted to-primary/10 flex items-center justify-center border-b border-border">
-                    <div className="text-center px-8">
-                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
-                        <ArrowUpRight className="h-5 w-5" />
+                  <div className="aspect-[16/9] bg-gradient-to-br from-primary/5 via-muted to-primary/10 flex items-center justify-center border-b border-border overflow-hidden">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="text-center px-8">
+                        <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
+                          <ArrowUpRight className="h-5 w-5" />
+                        </div>
+                        <p className="text-xs text-muted-foreground font-mono">
+                          Architecture Diagram
+                        </p>
                       </div>
-                      <p className="text-xs text-muted-foreground font-mono">
-                        Architecture Diagram
-                      </p>
-                    </div>
+                    )}
                   </div>
 
                   {/* Content */}

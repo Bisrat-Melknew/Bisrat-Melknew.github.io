@@ -24,8 +24,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Bisrat M. — Senior Infrastructure & Security Engineer",
-    template: "%s | Bisrat M.",
+    default: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
+    template: "%s | Bisrat Melknew",
   },
   description:
     "Portfolio of a Senior Infrastructure & Security Engineer specializing in designing, deploying, and securing scalable enterprise infrastructure across cloud and on-prem environments.",
@@ -40,18 +40,18 @@ export const metadata: Metadata = {
     "AWS",
     "Azure",
   ],
-  authors: [{ name: "Bisrat M." }],
+  authors: [{ name: "Bisrat Melknew" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Bisrat M. — Senior Infrastructure & Security Engineer",
+    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
     description:
       "Designing, deploying, and securing scalable enterprise infrastructure.",
-    siteName: "Bisrat M. Portfolio",
+    siteName: "Bisrat M elknew Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bisrat M. — Senior Infrastructure & Security Engineer",
+    title: "Bisrat Melknew — Senior Infrastructure & Security Engineer",
     description:
       "Designing, deploying, and securing scalable enterprise infrastructure.",
   },

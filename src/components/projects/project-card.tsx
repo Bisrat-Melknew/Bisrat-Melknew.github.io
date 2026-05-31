@@ -19,15 +19,23 @@ export function ProjectCard({ project }: ProjectCardProps) {
         transition={{ duration: 0.2 }}
       >
         {/* Image Area */}
-        <div className="aspect-[16/9] bg-gradient-to-br from-primary/5 via-muted to-primary/10 flex items-center justify-center border-b border-border relative">
-          <div className="text-center px-8">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
-              <ArrowUpRight className="h-5 w-5" />
+        <div className="aspect-[16/9] bg-gradient-to-br from-primary/5 via-muted to-primary/10 flex items-center justify-center border-b border-border relative overflow-hidden">
+          {project.image ? (
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          ) : (
+            <div className="text-center px-8">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
+                <ArrowUpRight className="h-5 w-5" />
+              </div>
+              <p className="text-xs text-muted-foreground font-mono">
+                Architecture Overview
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground font-mono">
-              Architecture Overview
-            </p>
-          </div>
+          )}
         </div>
 
         {/* Content */}

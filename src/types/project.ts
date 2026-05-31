@@ -8,7 +8,7 @@ export interface Project {
   featured: boolean;
   image?: string;
   technologies: string[];
-  category: "Enterprise" | "Security" | "Cloud" | "Homelab";
+  category: "Enterprise" | "Security" | "Cloud" | "Homelab" | "Networking";
 }
 
 export interface ProjectFrontmatter {
@@ -20,7 +20,7 @@ export interface ProjectFrontmatter {
   featured: boolean;
   image?: string;
   technologies: string[];
-  category: "Enterprise" | "Security" | "Cloud" | "Homelab";
+  category: "Enterprise" | "Security" | "Cloud" | "Homelab" | "Networking";
   overview?: string;
   problem?: string;
   solution?: string;

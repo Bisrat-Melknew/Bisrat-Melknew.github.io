@@ -18,7 +18,7 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Hero Text */}
           <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-left order-1 lg:order-1">
             {/* Availability Badge */}
@@ -106,7 +106,7 @@ export function Hero() {
           <div className="lg:col-span-5 flex justify-center order-2 lg:order-2 w-full">
             <FadeIn delay={0.2}>
               <div className="w-full max-w-[390px] bg-card/60 backdrop-blur-md rounded-3xl border border-border/80 p-5 shadow-[0_12px_40px_-15px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_-15px_rgba(0,0,0,0.5)] transition-all duration-300 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.12)] hover:border-border">
-                
+
                 <h2 className="text-center font-heading text-lg font-bold text-foreground mb-4 tracking-tight">
                   About Me
                 </h2>
@@ -143,9 +143,9 @@ export function Hero() {
                   <h3 className="font-heading text-lg font-extrabold text-foreground tracking-tight">
                     {siteConfig.name}
                   </h3>
-                  
+
                   <p className="text-sm font-semibold text-primary mt-1">
-                    Senior Infrastructure & Security Engineer
+                    IT Infrastructure & Security Engineer
                   </p>
 
                   <div className="mt-3 flex items-center justify-center gap-1.5 flex-wrap text-xs text-muted-foreground px-2">
